@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hss.healthyManager.dao.ResourcesDao">
+
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hss.healthyManager.entity.Resources">
+        <id column="id" property="id"/>
+        <result column="create_datetime" property="createDatetime"/>
+        <result column="update_datetime" property="updateDatetime"/>
+        <result column="name" property="name"/>
+        <result column="parent_id" property="parentId"/>
+        <result column="permission" property="permission"/>
+        <result column="sort" property="sort"/>
+        <result column="type" property="type"/>
+        <result column="url" property="url"/>
+        <result column="icon" property="icon"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, create_datetime, update_datetime, name, parent_id, permission, sort, type, url,icon
+    </sql>
+
+    <select id="findRoleResource" resultMap="BaseResultMap">
+        select a.*,b.*
+        from resources a
+        inner join role_resource_bind b on a.id = b.resource_id
+        where
+        b.role_id = ${roleId}
+        <if test="typeId!=null">
+            and a.type = ${typeId}
+        </if>
+        order by a.sort asc
+
+    </select>
+
+    <select id="listUrlAndPermission" resultMap="BaseResultMap">
+        SELECT
+            url,
+            permission
+        FROM
+            resources
+        WHERE
+            url IS NOT NULL
+    </select>
+
+
+</mapper>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hss.healthyManager.dao.RoleResourceBindDao">
+
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hss.healthyManager.entity.RoleResourceBind">
+        <id column="id" property="id"/>
+        <result column="create_datetime" property="createDatetime"/>
+        <result column="update_datetime" property="updateDatetime"/>
+        <result column="resource_id" property="resourceId"/>
+        <result column="role_id" property="roleId"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, create_datetime, update_datetime, resource_id, role_id
+    </sql>
+
+
+    <insert id="addBindInfo">
+        insert into
+        role_resource_bind (resource_id,role_id)
+        values
+        <foreach collection="roleList" open="" close="" separator="," index="index" item="roleId">
+            (#{resourceId},#{roleId})
+        </foreach>
+    </insert>
+
+    <delete id="deleteBindInfo">
+        delete from role_resource_bind
+        where resource_id = #{resourceId}
+    </delete>
+
+</mapper>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hss.healthyManager.dao.SuggestionDao">
+
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hss.healthyManager.entity.Suggestion">
+        <id column="id" property="id"/>
+        <result column="create_datetime" property="createDatetime"/>
+        <result column="update_datetime" property="updateDatetime"/>
+        <result column="check_info_id" property="checkInfoId"/>
+        <result column="content" property="content"/>
+        <result column="doctor_id" property="doctorId"/>
+        <result column="is_read" property="isRead"/>
+        <result column="office" property="office"/>
+        <result column="user_id" property="userId"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, create_datetime, update_datetime, check_info_id, content, doctor_id, is_read, office, user_id
+    </sql>
+
+
+    <delete id="deleteByIds">
+        delete from suggestion
+        where id in
+        <foreach collection="ids" item="infoId" separator="," open="(" close=")">
+            #{infoId}
+        </foreach>
+    </delete>
+
+    <update id="setInfoReadByIds">
+        update suggestion set is_read = #{isRead}
+        where id in
+        <foreach collection="ids" item="infoId" separator="," open="(" close=")">
+            #{infoId}
+        </foreach>
+    </update>
+</mapper>

@@ -1,0 +1,25 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: healthy-manager
+  datasource:
+    username: root
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/document?&serverTimezone=GMT%2B8&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull
+    name: druidDataSource
+    type: com.alibaba.druid.pool.DruidDataSource
+
+  servlet:
+    multipart:
+      max-file-size: 5MB
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+mybatis:
+  type-aliases-package: com.hss.healthyManager.entity
+  mapper-locations: mapper/*.xml
+

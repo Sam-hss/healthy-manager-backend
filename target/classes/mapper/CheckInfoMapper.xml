@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hss.healthyManager.dao.CheckInfoDao">
+
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hss.healthyManager.entity.CheckInfo">
+        <id column="id" property="id"/>
+        <result column="create_datetime" property="createDatetime"/>
+        <result column="update_datetime" property="updateDatetime"/>
+        <result column="all_legs" property="allLegs"/>
+        <result column="arthrosis" property="arthrosis"/>
+        <result column="assay_check" property="assayCheck"/>
+        <result column="birth" property="birth"/>
+        <result column="blood_pressure" property="bloodPressure"/>
+        <result column="check_result" property="checkResult"/>
+        <result column="check_time" property="checkTime"/>
+        <result column="chest_check" property="chestCheck"/>
+        <result column="college" property="college"/>
+        <result column="color_or_code" property="colorOrCode"/>
+        <result column="correct_left_view" property="correctLeftView"/>
+        <result column="correct_right_view" property="correctRightView"/>
+        <result column="culture_level" property="cultureLevel"/>
+        <result column="ear_sick" property="earSick"/>
+        <result column="foot" property="foot"/>
+        <result column="glandula_thyroidea" property="glandulaThyroidea"/>
+        <result column="grade" property="grade"/>
+        <result column="growth" property="growth"/>
+        <result column="heart" property="heart"/>
+        <result column="height" property="height"/>
+        <result column="history_check" property="historyCheck"/>
+        <result column="hypodontia" property="hypodontia"/>
+        <result column="left_audition" property="leftAudition"/>
+        <result column="left_view" property="leftView"/>
+        <result column="liver" property="liver"/>
+        <result column="lung" property="lung"/>
+        <result column="lymph" property="lymph"/>
+        <result column="major" property="major"/>
+        <result column="mind" property="mind"/>
+        <result column="name" property="name"/>
+        <result column="nation" property="nation"/>
+        <result column="native_place" property="nativePlace"/>
+        <result column="occupation" property="occupation"/>
+        <result column="other_check" property="otherCheck"/>
+        <result column="other_eyes_sick" property="otherEyesSick"/>
+        <result column="other_internal_sick" property="otherInternalSick"/>
+        <result column="other_sense_sick" property="otherSenseSick"/>
+        <result column="other_surgery_sick" property="otherSurgerySick"/>
+        <result column="paranasal_sinus" property="paranasalSinus"/>
+        <result column="photo" property="photo"/>
+        <result column="present_address" property="presentAddress"/>
+        <result column="pulse" property="pulse"/>
+        <result column="real_age" property="realAge"/>
+        <result column="remark" property="remark"/>
+        <result column="right_audition" property="rightAudition"/>
+        <result column="right_view" property="rightView"/>
+        <result column="sealer" property="sealer"/>
+        <result column="sex" property="sex"/>
+        <result column="sign_for_assay" property="signForAssay"/>
+        <result column="sign_for_chest" property="signForChest"/>
+        <result column="sign_for_ear" property="signForEar"/>
+        <result column="sign_for_eyes" property="signForEyes"/>
+        <result column="sign_for_internal" property="signForInternal"/>
+        <result column="sign_for_mouth" property="signForMouth"/>
+        <result column="sign_for_result" property="signForResult"/>
+        <result column="sign_for_surgery" property="signForSurgery"/>
+        <result column="single_color_judge" property="singleColorJudge"/>
+        <result column="skin" property="skin"/>
+        <result column="smell" property="smell"/>
+        <result column="spine_backbone" property="spineBackbone"/>
+        <result column="spleen" property="spleen"/>
+        <result column="stammer" property="stammer"/>
+        <result column="stu_no" property="stuNo"/>
+        <result column="suggest_for_check" property="suggestForCheck"/>
+        <result column="throat" property="throat"/>
+        <result column="tooth_place" property="toothPlace"/>
+        <result column="tooth_sick" property="toothSick"/>
+        <result column="user_id" property="userId"/>
+        <result column="waistline" property="waistline"/>
+        <result column="weight" property="weight"/>
+        <result column="work_place" property="workPlace"/>
+        <result column="check_year" property="checkYear"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, create_datetime, update_datetime, all_legs, arthrosis, assay_check, birth, blood_pressure, check_result, check_time, chest_check, college, color_or_code, correct_left_view, correct_right_view, culture_level, ear_sick, foot, glandula_thyroidea, grade, growth, heart, height, history_check, hypodontia, left_audition, left_view, liver, lung, lymph, major, mind, name, nation, native_place, occupation, other_check, other_eyes_sick, other_internal_sick, other_sense_sick, other_surgery_sick, paranasal_sinus, photo, present_address, pulse, real_age, remark, right_audition, right_view, sealer, sex, sign_for_assay, sign_for_chest, sign_for_ear, sign_for_eyes, sign_for_internal, sign_for_mouth, sign_for_result, sign_for_surgery, single_color_judge, skin, smell, spine_backbone, spleen, stammer, stu_no, suggest_for_check, throat, tooth_place, tooth_sick, user_id, waistline, weight, work_place,check_year
+    </sql>
+
+    <select id="getDataAnalysis" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from check_info
+        where user_id = #{userId}
+        order by check_time
+    </select>
+
+    <select id="getCurrentCheckInfo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from check_info
+        where user_id = #{userId}
+        order by check_time desc
+        limit 0,1
+    </select>
+
+</mapper>

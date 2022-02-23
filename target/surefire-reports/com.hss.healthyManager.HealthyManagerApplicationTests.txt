@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.hss.healthyManager.HealthyManagerApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 20.452 s - in com.hss.healthyManager.HealthyManagerApplicationTests

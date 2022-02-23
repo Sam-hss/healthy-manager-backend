@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hss.healthyManager.dao.HealthDocumentDao">
+
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hss.healthyManager.entity.HealthDocument">
+        <id column="id" property="id"/>
+        <result column="create_datetime" property="createDatetime"/>
+        <result column="update_datetime" property="updateDatetime"/>
+        <result column="author" property="author"/>
+        <result column="book" property="book"/>
+        <result column="content" property="content"/>
+        <result column="description" property="description"/>
+        <result column="is_published" property="isPublished"/>
+        <result column="publish_data" property="publishData"/>
+        <result column="visit_num" property="visitNum"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, create_datetime, update_datetime, author, book, content, description, is_published, publish_data, visit_num
+    </sql>
+
+</mapper>
